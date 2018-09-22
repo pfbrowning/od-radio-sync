@@ -3,7 +3,7 @@ OD Radio Sync is a bash script used to update the radio station memory for certa
 
 I wrote it for use with my GOSO MA-80 and Ocean Digital WR-220 radios, both of which use the same atrocious web interface.  It should work for any other radio which also uses the same interface.  Your mileage may vary, of course.
 
-![Radio Web Interace](/path/to/img.jpg)
+![Radio Web Interace](https://raw.githubusercontent.com/pfbrowning/od-radio-sync/master/web-interface.png)
 If your radio hosts this web interface, then this script will probably work for you.
 
 # Dependencies
@@ -13,7 +13,7 @@ apt-get install python-pip curl
 pip install csvkit
 ```
 # CSV Structure
-The script expects a *.csv file which contains one column entitled "Title" and another entitled "URL".  If these two columns don't exist, or are titled something else, then you're going to have a bad time.  They can be in any order, and you can also have any number of other columns as well.  [sample-stations.csv](sample-stations.csv) is included as an example.
+The script expects a *.csv file which contains one column entitled "Title" and another entitled "URL".  If these two columns don't exist, or are titled something else, then you're going to have a bad time.  They can be in any order, and you can also have any number of other columns as well.  [sample-stations.csv](https://raw.githubusercontent.com/pfbrowning/od-radio-sync/master/sample-stations.csv) is included as an example.
 # Usage
 In order to run the script, simply pass it the hostname of your radio and the absolute path to your stations *.csv file.  For example:
 ```console
