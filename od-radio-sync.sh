@@ -18,18 +18,22 @@ mapfile -t stations < <(csvcut $stations_file -c Title,URL | grep -v -w "," | ta
 
 : "Clear out the radio's station memory by deleting 100 stations: these radios
 can only hold up to 100 stations."
+echo "Clearing Existing Stations"
 for i in {1..100}
 do
-	curl "${radio_url}/cgi-bin/EN/cgi?CD=0;CI=0" > /dev/null
+	curl -s "${radio_url}/cgi-bin/EN/cgi?CD=0;CI=0" > /dev/null
 done
 
 : "For each station that we read earlier"
+echo "Writing Stations"
+echo "${#stations[@]} stations found in the *.csv"
 for i in "${stations[@]}"
 do
 	: "Tokenize the station line into an array and then into variables for readability"
 	IFS=',' read -r -a station_parts <<< $i
 	title=${station_parts[0]}
 	station_url=${station_parts[1]}
+	echo "Writing ${title}, ${station_url}"
 
 	: "POST the station data to the radio"
 	curl -X POST "${radio_url}/cgi-bin/EN/cgi?CA=0;CI=0" -d "channel_name=${title}&channel_url=${station_url}" > /dev/null
