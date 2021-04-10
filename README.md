@@ -9,8 +9,8 @@ If your radio hosts this web interface, then this script will probably work for 
 # Dependencies
 The script depends on curl and csvkit, and the easiest way to install csvkit is via pip.  The following should get you set up on modern Debian-based distros:
 ```console
-apt-get install python-pip curl
-pip install csvkit
+sudo apt-get install python3-pip libicu-dev curl
+sudo pip install csvkit
 ```
 # CSV Structure
 The script expects a *.csv file which contains one column entitled "Title" and another entitled "URL".  If these two columns don't exist, or are titled something else, then you're going to have a bad time.  They can be in any order, and you can also have any number of other columns as well.  [sample-stations.csv](https://raw.githubusercontent.com/pfbrowning/od-radio-sync/master/sample-stations.csv) is included as an example.
